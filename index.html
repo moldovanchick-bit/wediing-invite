@@ -39,18 +39,98 @@ h2{margin:12px 0 18px}
   .cards{margin-top:22px}
   .gift{margin-top:18px;padding:20px 16px}
   .timeline{margin-top:18px}
-}</style></head>
+}/* Luxury invitation opening screen */
+.intro-screen{
+ background:
+ radial-gradient(ellipse at 50% 42%,rgba(255,255,255,.96) 0%,rgba(255,253,249,.76) 34%,transparent 67%),
+ radial-gradient(ellipse at 8% 12%,#d9d5c780,transparent 32%),
+ radial-gradient(ellipse at 92% 88%,#ead3d080,transparent 34%),
+ linear-gradient(145deg,#f6eee8 0%,#fffdfa 48%,#f0e5df 100%);
+}
+.intro-screen:before{content:"";position:absolute;inset:15px;border:1px solid #b69a7855;pointer-events:none}
+.intro-screen:after{content:"";position:absolute;inset:22px;border:1px solid #b69a7825;pointer-events:none}
+.intro-content{animation:introArrive 1.1s cubic-bezier(.2,.7,.2,1) both}
+.intro-kicker{font-size:9px;letter-spacing:.34em;color:#a88b70}
+.intro-title{font-size:clamp(48px,11vw,72px);letter-spacing:.005em;margin:24px 0 9px;text-shadow:0 2px 18px #b69a7818}
+.intro-amp{color:#bd9290;font-style:italic}
+.intro-divider{display:flex;align-items:center;justify-content:center;gap:14px;width:150px;margin:0 auto 15px;color:#b69a78;font-size:13px}
+.intro-divider:before,.intro-divider:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#b69a78aa)}
+.intro-divider:after{transform:scaleX(-1)}
+.intro-date{font-size:10px;letter-spacing:.24em;color:#8f7d72}
+.envelope-button{
+ width:min(330px,82vw);height:218px;margin:36px auto 26px;
+ filter:drop-shadow(0 22px 24px #6d514024);
+ animation:envelopeFloat 4.8s ease-in-out infinite;
+}
+.envelope-back{
+ inset:18px 0 0;border:1px solid #c8ad9b;
+ background:linear-gradient(135deg,#e8d7ce,#f3e8df 48%,#dfc9c0);
+ box-shadow:inset 0 0 0 5px #f8f1eb,inset 0 0 0 6px #c5a98f66;
+}
+.envelope-back:before{content:"";position:absolute;inset:13px;border:1px solid #b99b7b88;pointer-events:none}
+.envelope-letter{
+ left:9%;right:9%;top:8px;height:165px;
+ background:linear-gradient(145deg,#fffefa,#f8f1e9);
+ border:1px solid #d8c4ad;
+ box-shadow:0 4px 16px #6d514018,inset 0 0 0 5px #fffefa,inset 0 0 0 6px #d9c6b1;
+ font:500 32px "Cormorant Garamond",Georgia,serif;color:#695954;
+}
+.envelope-letter:before{content:"✦";font-size:15px;color:#b69a78;margin-bottom:7px}
+.envelope-letter small{font-size:8px;letter-spacing:.22em;color:#a78b70;margin-top:9px}
+.envelope-front{
+ inset:18px 0 0;
+ background:linear-gradient(145deg,#ead8cf,#dfc5bb 55%,#e9d8ce);
+ clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
+ border:1px solid #c8ad9b;
+}
+.envelope-flap{
+ inset:18px 0 auto;height:125px;
+ background:linear-gradient(160deg,#f1e2d9,#e6d0c7);
+ clip-path:polygon(0 0,100% 0,50% 100%);
+ filter:drop-shadow(0 2px 2px #806b6620);
+}
+.envelope-seal{
+ top:91px;width:54px;height:54px;
+ border:1px solid #d8b98e;
+ background:radial-gradient(circle at 35% 28%,#d9b98f,#a98259 70%,#896744);
+ color:#fff9ef;box-shadow:0 4px 12px #70503555,inset 0 0 0 3px #d9bd9666;
+ font:500 14px "Cormorant Garamond",Georgia,serif;letter-spacing:-.04em;
+}
+.envelope-seal span{font-style:italic;font-size:11px}
+.open-prompt{
+ padding:16px 32px;border:1px solid #b99b7b;
+ background:linear-gradient(135deg,#b8958d,#a77e79);
+ box-shadow:0 8px 22px #8e686326,inset 0 1px 0 #ffffff55;
+ font-size:9px;letter-spacing:.22em;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+}
+.open-prompt:active{transform:translateY(1px)}
+.open-prompt:hover{box-shadow:0 12px 28px #8e68633d;filter:brightness(1.04)}
+.intro-hint{font-size:10px;letter-spacing:.035em;color:#9a8980;margin-top:17px}
+.heart{color:#c6a47e;text-shadow:0 3px 10px #a77d7d25}
+.heart:nth-of-type(3n){color:#bd9290}
+.heart:nth-of-type(3n+1){color:#d8c2a4}
+@keyframes introArrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes envelopeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media(max-width:600px){
+ .intro-screen:before{inset:10px}.intro-screen:after{inset:16px}
+ .envelope-button{height:204px;margin:30px auto 22px}
+ .envelope-letter{height:155px}
+ .intro-title{margin-top:20px}
+}
+@media(prefers-reduced-motion:reduce){.intro-content,.envelope-button{animation:none}}
+</style></head>
 <body>
 <div class="intro-screen" id="intro-screen">
   <div class="intro-content">
-    <div class="intro-kicker">Особенное приглашение</div>
-    <div class="intro-title">Дмитрий &amp; Яна</div>
-    <div class="intro-date">26 · 06 · 2027</div>
+    <div class="intro-kicker">СВАДЕБНОЕ ПРИГЛАШЕНИЕ</div>
+    <div class="intro-title">Дмитрий <span class="intro-amp">&amp;</span> Яна</div>
+    <div class="intro-divider"><span>✦</span></div>
+    <div class="intro-date">26 ИЮНЯ 2027 · GRAND HALL</div>
     <button class="envelope-button" id="envelope-button" type="button" aria-label="Открыть свадебное приглашение">
-      <span class="envelope-back"></span><span class="envelope-letter">Дмитрий &amp; Яна<small>С ЛЮБОВЬЮ ПРИГЛАШАЮТ</small></span><span class="envelope-front"></span><span class="envelope-flap"></span><span class="envelope-seal">♥</span>
+      <span class="envelope-back"></span><span class="envelope-letter">Дмитрий &amp; Яна<small>С ЛЮБОВЬЮ ПРИГЛАШАЮТ</small></span><span class="envelope-front"></span><span class="envelope-flap"></span><span class="envelope-seal">Д<span>&amp;</span>Я</span>
     </button>
     <button class="open-prompt" id="open-invitation" type="button">Открыть приглашение</button>
-    <div class="intro-hint">Нажмите, чтобы открыть письмо</div>
+    <div class="intro-hint">Прикоснитесь к конверту, чтобы открыть приглашение</div>
   </div>
   <span class="heart" aria-hidden="true" style="--dx:-101px;--dy:-117px;--size:21px;--delay:0.000s">♥</span><span class="heart" aria-hidden="true" style="--dx:-145px;--dy:-138px;--size:26px;--delay:0.018s">♥</span><span class="heart" aria-hidden="true" style="--dx:-187px;--dy:-164px;--size:32px;--delay:0.036s">♥</span><span class="heart" aria-hidden="true" style="--dx:-226px;--dy:-195px;--size:38px;--delay:0.054s">♥</span><span class="heart" aria-hidden="true" style="--dx:-261px;--dy:-231px;--size:21px;--delay:0.072s">♥</span><span class="heart" aria-hidden="true" style="--dx:-89px;--dy:-145px;--size:26px;--delay:0.090s">♥</span><span class="heart" aria-hidden="true" style="--dx:-125px;--dy:-178px;--size:32px;--delay:0.108s">♥</span><span class="heart" aria-hidden="true" style="--dx:-158px;--dy:-215px;--size:38px;--delay:0.126s">♥</span><span class="heart" aria-hidden="true" style="--dx:-186px;--dy:-256px;--size:21px;--delay:0.144s">♥</span><span class="heart" aria-hidden="true" style="--dx:-210px;--dy:-300px;--size:26px;--delay:0.162s">♥</span><span class="heart" aria-hidden="true" style="--dx:-70px;--dy:-168px;--size:32px;--delay:0.180s">♥</span><span class="heart" aria-hidden="true" style="--dx:-95px;--dy:-210px;--size:38px;--delay:0.198s">♥</span><span class="heart" aria-hidden="true" style="--dx:-115px;--dy:-255px;--size:21px;--delay:0.216s">♥</span><span class="heart" aria-hidden="true" style="--dx:-131px;--dy:-302px;--size:26px;--delay:0.234s">♥</span><span class="heart" aria-hidden="true" style="--dx:-141px;--dy:-351px;--size:32px;--delay:0.252s">♥</span><span class="heart" aria-hidden="true" style="--dx:-44px;--dy:-185px;--size:38px;--delay:0.270s">♥</span><span class="heart" aria-hidden="true" style="--dx:-56px;--dy:-232px;--size:21px;--delay:0.288s">♥</span><span class="heart" aria-hidden="true" style="--dx:-63px;--dy:-281px;--size:26px;--delay:0.306s">♥</span><span class="heart" aria-hidden="true" style="--dx:-64px;--dy:-331px;--size:32px;--delay:0.324s">♥</span><span class="heart" aria-hidden="true" style="--dx:-60px;--dy:-381px;--size:38px;--delay:0.342s">♥</span><span class="heart" aria-hidden="true" style="--dx:-15px;--dy:-194px;--size:21px;--delay:0.360s">♥</span><span class="heart" aria-hidden="true" style="--dx:-13px;--dy:-242px;--size:26px;--delay:0.378s">♥</span><span class="heart" aria-hidden="true" style="--dx:-6px;--dy:-291px;--size:32px;--delay:0.396s">♥</span><span class="heart" aria-hidden="true" style="--dx:7px;--dy:-339px;--size:38px;--delay:0.414s">♥</span><span class="heart" aria-hidden="true" style="--dx:26px;--dy:-386px;--size:21px;--delay:0.432s">♥</span><span class="heart" aria-hidden="true" style="--dx:15px;--dy:-194px;--size:26px;--delay:0.450s">♥</span><span class="heart" aria-hidden="true" style="--dx:31px;--dy:-240px;--size:32px;--delay:0.468s">♥</span><span class="heart" aria-hidden="true" style="--dx:52px;--dy:-284px;--size:38px;--delay:0.486s">♥</span><span class="heart" aria-hidden="true" style="--dx:78px;--dy:-326px;--size:21px;--delay:0.504s">♥</span><span class="heart" aria-hidden="true" style="--dx:110px;--dy:-366px;--size:26px;--delay:0.522s">♥</span><span class="heart" aria-hidden="true" style="--dx:44px;--dy:-185px;--size:32px;--delay:0.540s">♥</span><span class="heart" aria-hidden="true" style="--dx:73px;--dy:-225px;--size:38px;--delay:0.558s">♥</span><span class="heart" aria-hidden="true" style="--dx:106px;--dy:-261px;--size:21px;--delay:0.576s">♥</span><span class="heart" aria-hidden="true" style="--dx:143px;--dy:-294px;--size:26px;--delay:0.594s">♥</span><span class="heart" aria-hidden="true" style="--dx:184px;--dy:-323px;--size:32px;--delay:0.612s">♥</span><span class="heart" aria-hidden="true" style="--dx:70px;--dy:-168px;--size:38px;--delay:0.630s">♥</span><span class="heart" aria-hidden="true" style="--dx:108px;--dy:-198px;--size:21px;--delay:0.648s">♥</span><span class="heart" aria-hidden="true" style="--dx:150px;--dy:-224px;--size:26px;--delay:0.666s">♥</span><span class="heart" aria-hidden="true" style="--dx:195px;--dy:-244px;--size:32px;--delay:0.684s">♥</span><span class="heart" aria-hidden="true" style="--dx:243px;--dy:-260px;--size:38px;--delay:0.702s">♥</span><span class="heart" aria-hidden="true" style="--dx:89px;--dy:-145px;--size:21px;--delay:0.720s">♥</span><span class="heart" aria-hidden="true" style="--dx:135px;--dy:-163px;--size:26px;--delay:0.738s">♥</span><span class="heart" aria-hidden="true" style="--dx:182px;--dy:-175px;--size:32px;--delay:0.756s">♥</span><span class="heart" aria-hidden="true" style="--dx:231px;--dy:-182px;--size:38px;--delay:0.774s">♥</span><span class="heart" aria-hidden="true" style="--dx:282px;--dy:-183px;--size:21px;--delay:0.792s">♥</span><span class="heart" aria-hidden="true" style="--dx:101px;--dy:-117px;--size:26px;--delay:0.810s">♥</span><span class="heart" aria-hidden="true" style="--dx:150px;--dy:-121px;--size:32px;--delay:0.828s">♥</span><span class="heart" aria-hidden="true" style="--dx:199px;--dy:-119px;--size:38px;--delay:0.846s">♥</span><span class="heart" aria-hidden="true" style="--dx:248px;--dy:-112px;--size:21px;--delay:0.864s">♥</span><span class="heart" aria-hidden="true" style="--dx:297px;--dy:-99px;--size:26px;--delay:0.882s">♥</span><span class="heart" aria-hidden="true" style="--dx:105px;--dy:-87px;--size:32px;--delay:0.900s">♥</span><span class="heart" aria-hidden="true" style="--dx:152px;--dy:-77px;--size:38px;--delay:0.918s">♥</span><span class="heart" aria-hidden="true" style="--dx:199px;--dy:-61px;--size:21px;--delay:0.936s">♥</span><span class="heart" aria-hidden="true" style="--dx:244px;--dy:-40px;--size:26px;--delay:0.954s">♥</span><span class="heart" aria-hidden="true" style="--dx:287px;--dy:-13px;--size:32px;--delay:0.972s">♥</span><span class="heart" aria-hidden="true" style="--dx:100px;--dy:-57px;--size:38px;--delay:0.990s">♥</span><span class="heart" aria-hidden="true" style="--dx:142px;--dy:-34px;--size:21px;--delay:1.008s">♥</span><span class="heart" aria-hidden="true" style="--dx:182px;--dy:-5px;--size:26px;--delay:1.026s">♥</span><span class="heart" aria-hidden="true" style="--dx:219px;--dy:28px;--size:32px;--delay:1.044s">♥</span><span class="heart" aria-hidden="true" style="--dx:253px;--dy:66px;--size:38px;--delay:1.062s">♥</span><span class="heart" aria-hidden="true" style="--dx:86px;--dy:-30px;--size:21px;--delay:1.080s">♥</span><span class="heart" aria-hidden="true" style="--dx:120px;--dy:5px;--size:26px;--delay:1.098s">♥</span><span class="heart" aria-hidden="true" style="--dx:150px;--dy:44px;--size:32px;--delay:1.116s">♥</span><span class="heart" aria-hidden="true" style="--dx:176px;--dy:86px;--size:38px;--delay:1.134s">♥</span><span class="heart" aria-hidden="true" style="--dx:197px;--dy:132px;--size:21px;--delay:1.152s">♥</span><span class="heart" aria-hidden="true" style="--dx:65px;--dy:-8px;--size:26px;--delay:1.170s">♥</span><span class="heart" aria-hidden="true" style="--dx:88px;--dy:35px;--size:32px;--delay:1.188s">♥</span><span class="heart" aria-hidden="true" style="--dx:106px;--dy:81px;--size:38px;--delay:1.206s">♥</span><span class="heart" aria-hidden="true" style="--dx:118px;--dy:129px;--size:21px;--delay:1.224s">♥</span><span class="heart" aria-hidden="true" style="--dx:126px;--dy:179px;--size:26px;--delay:1.242s">♥</span><span class="heart" aria-hidden="true" style="--dx:39px;--dy:8px;--size:32px;--delay:1.260s">♥</span><span class="heart" aria-hidden="true" style="--dx:48px;--dy:55px;--size:38px;--delay:1.278s">♥</span><span class="heart" aria-hidden="true" style="--dx:52px;--dy:104px;--size:21px;--delay:1.296s">♥</span><span class="heart" aria-hidden="true" style="--dx:50px;--dy:154px;--size:26px;--delay:1.314s">♥</span><span class="heart" aria-hidden="true" style="--dx:43px;--dy:204px;--size:32px;--delay:1.332s">♥</span><span class="heart" aria-hidden="true" style="--dx:9px;--dy:15px;--size:38px;--delay:1.350s">♥</span><span class="heart" aria-hidden="true" style="--dx:4px;--dy:63px;--size:21px;--delay:1.368s">♥</span><span class="heart" aria-hidden="true" style="--dx:-6px;--dy:111px;--size:26px;--delay:1.386s">♥</span><span class="heart" aria-hidden="true" style="--dx:-22px;--dy:158px;--size:32px;--delay:1.404s">♥</span><span class="heart" aria-hidden="true" style="--dx:-43px;--dy:204px;--size:38px;--delay:1.422s">♥</span><span class="heart" aria-hidden="true" style="--dx:-21px;--dy:13px;--size:21px;--delay:1.440s">♥</span><span class="heart" aria-hidden="true" style="--dx:-40px;--dy:58px;--size:26px;--delay:1.458s">♥</span><span class="heart" aria-hidden="true" style="--dx:-63px;--dy:101px;--size:32px;--delay:1.476s">♥</span><span class="heart" aria-hidden="true" style="--dx:-92px;--dy:141px;--size:38px;--delay:1.494s">♥</span><span class="heart" aria-hidden="true" style="--dx:-126px;--dy:179px;--size:21px;--delay:1.512s">♥</span><span class="heart" aria-hidden="true" style="--dx:-50px;--dy:2px;--size:26px;--delay:1.530s">♥</span><span class="heart" aria-hidden="true" style="--dx:-80px;--dy:40px;--size:32px;--delay:1.548s">♥</span><span class="heart" aria-hidden="true" style="--dx:-115px;--dy:75px;--size:38px;--delay:1.566s">♥</span><span class="heart" aria-hidden="true" style="--dx:-154px;--dy:105px;--size:21px;--delay:1.584s">♥</span><span class="heart" aria-hidden="true" style="--dx:-197px;--dy:132px;--size:26px;--delay:1.602s">♥</span><span class="heart" aria-hidden="true" style="--dx:-74px;--dy:-16px;--size:32px;--delay:1.620s">♥</span><span class="heart" aria-hidden="true" style="--dx:-114px;--dy:12px;--size:38px;--delay:1.638s">♥</span><span class="heart" aria-hidden="true" style="--dx:-158px;--dy:35px;--size:21px;--delay:1.656s">♥</span><span class="heart" aria-hidden="true" style="--dx:-204px;--dy:53px;--size:26px;--delay:1.674s">♥</span><span class="heart" aria-hidden="true" style="--dx:-253px;--dy:66px;--size:32px;--delay:1.692s">♥</span><span class="heart" aria-hidden="true" style="--dx:-92px;--dy:-40px;--size:38px;--delay:1.710s">♥</span><span class="heart" aria-hidden="true" style="--dx:-139px;--dy:-25px;--size:21px;--delay:1.728s">♥</span><span class="heart" aria-hidden="true" style="--dx:-187px;--dy:-16px;--size:26px;--delay:1.746s">♥</span><span class="heart" aria-hidden="true" style="--dx:-236px;--dy:-12px;--size:32px;--delay:1.764s">♥</span><span class="heart" aria-hidden="true" style="--dx:-287px;--dy:-13px;--size:38px;--delay:1.782s">♥</span>
 </div>
