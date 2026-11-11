@@ -76,6 +76,7 @@
   if(endpoint.indexOf('https://script.google.com/macros/s/')!==0){
    e.preventDefault();status.textContent='Анкета подготовлена. Приём ответов будет включён после подключения таблицы.';status.className='rsvp-status error';return;
   }
+  form.action=endpoint;
   currentToken=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2);
   token.value=currentToken;status.textContent='Отправляем ваш ответ…';status.className='rsvp-status';submit.disabled=true;submit.textContent='Отправка…';
  });
