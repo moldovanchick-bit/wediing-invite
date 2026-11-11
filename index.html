@@ -142,6 +142,79 @@ h2{margin:12px 0 18px}
 .intro-sparkle.sparkle-go{animation:sparkleFlight var(--duration) cubic-bezier(.14,.68,.2,1) var(--delay) forwards}
 @keyframes sparkleFlight{0%{opacity:0;transform:translate(-50%,-50%) scale(.1) rotate(0)}14%{opacity:1;transform:translate(-50%,-50%) scale(1.15) rotate(35deg)}78%{opacity:.9}100%{opacity:0;transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(.2) rotate(var(--rot))}}
 @media(prefers-reduced-motion:reduce){.intro-sparkle{display:none}.heart{animation:none!important}}
+/* Refined stationery envelope: remove decorative star burst and use realistic paper construction */
+.intro-sparkle{display:none!important}
+.envelope-button{
+ width:min(340px,84vw);height:224px;margin:38px auto 30px;
+ filter:drop-shadow(0 24px 24px #6b4d4030);
+ transform-style:preserve-3d;
+}
+.envelope-back{
+ inset:12px 0 0;border:1px solid #c9ad9c;
+ border-radius:5px 5px 3px 3px;
+ background:
+ linear-gradient(135deg,#f1e3d9 0%,#e8d4ca 48%,#ddc2b8 100%);
+ box-shadow:inset 0 0 0 5px #f8f0e9,inset 0 0 0 6px #c7a99588,0 12px 24px #75594b22;
+ overflow:hidden;
+}
+.envelope-back:before{
+ content:"";position:absolute;inset:12px;border:1px solid #b99a7d88;
+ background:repeating-linear-gradient(0deg,#ffffff08 0 1px,#8e6f5b05 1px 2px);
+}
+.envelope-back:after{
+ content:"";position:absolute;left:0;right:0;bottom:0;height:55%;
+ background:linear-gradient(145deg,transparent 49.5%,#c7a99b88 50%,#f5e8df 50.8%,transparent 52%),
+ linear-gradient(215deg,transparent 49.5%,#c7a99b88 50%,#f5e8df 50.8%,transparent 52%);
+ opacity:.72;
+}
+.envelope-letter{
+ left:8%;right:8%;top:5px;height:177px;
+ border:1px solid #d8c6b3;border-radius:2px;
+ background:linear-gradient(115deg,#fffefa 0%,#fbf6ee 52%,#f4ecdf 100%);
+ box-shadow:0 5px 18px #735a4928,inset 0 0 0 5px #fffefa,inset 0 0 0 6px #d9c6b2;
+ font:400 32px "Cormorant Garamond",Georgia,serif;
+ letter-spacing:.015em;color:#66534d;
+}
+.envelope-letter:before{
+ content:"";position:absolute;inset:12px;border:1px solid #d8c4a866;pointer-events:none;
+}
+.envelope-letter:after{
+ content:"✦";position:absolute;top:24px;color:#b99a72;font-size:13px;
+}
+.envelope-letter small{font:9px Manrope,sans-serif;letter-spacing:.2em;color:#a58b70;margin-top:12px}
+.envelope-front{
+ inset:12px 0 0;border:1px solid #c6a99a;border-radius:0 0 4px 4px;
+ background:linear-gradient(145deg,#f0dfd5 0%,#e5cec4 48%,#d9bfb5 100%);
+ clip-path:polygon(0 0,50% 61%,100% 0,100% 100%,0 100%);
+ box-shadow:inset 0 0 0 5px #f7eee7;
+}
+.envelope-front:before{
+ content:"";position:absolute;inset:8px;border:1px solid #b9978580;
+ clip-path:polygon(0 0,50% 61%,100% 0,100% 100%,0 100%);
+}
+.envelope-flap{
+ inset:12px 0 auto;height:138px;
+ background:linear-gradient(155deg,#f5e8df 0%,#ead5cb 55%,#dfc7bc 100%);
+ clip-path:polygon(0 0,100% 0,50% 100%);
+ transform-origin:50% 0;
+ filter:drop-shadow(0 5px 4px #765b4c22);
+}
+.envelope-seal{
+ top:99px;width:66px;height:66px;
+ border-radius:47% 53% 51% 49% / 52% 46% 54% 48%;
+ background:
+ radial-gradient(ellipse at 30% 22%,#f0c5b7 0%,#d99b8e 17%,transparent 42%),
+ radial-gradient(ellipse at 72% 80%,#854b49 0%,#a45d58 36%,transparent 68%),
+ linear-gradient(145deg,#d99b8e 0%,#b96f68 48%,#8b4b48 100%);
+ border:1px solid #985954;
+ box-shadow:0 7px 13px #57312d55,inset 0 2px 4px #ffe6d777,inset 0 -5px 8px #673b3b66,inset 0 0 0 2px #e5b1a288,inset 0 0 0 4px #8d504d55;
+ font:500 18px "Cormorant Garamond",Georgia,serif;color:#fff0e5;
+ text-shadow:0 1px 1px #653b3b88,0 -1px 1px #f7d5c5aa;
+}
+.envelope-seal:before{inset:6px;border:1px solid #f4cfc080;border-radius:46% 54% 49% 51%;box-shadow:inset 0 1px 2px #fff7}
+.envelope-seal:after{inset:-3px;border-radius:48% 52% 46% 54%;background:conic-gradient(from 12deg,#a45f59,#d99b8b,#9b5651,#d99b8b,#8c4b49,#c78377,#a45f59);z-index:-1;filter:blur(.3px);opacity:.9}
+.envelope-button.opened .envelope-letter{transform:translateY(-108px)}
+@media(max-width:600px){.envelope-button{height:214px;margin:30px auto 24px}.envelope-letter{height:168px}.envelope-seal{top:95px;width:62px;height:62px}}
 </style></head>
 <body>
 <div class="intro-screen" id="intro-screen">
@@ -194,7 +267,7 @@ h2{margin:12px 0 18px}
 <section class="soft" id="our-photo"><div class="inner"><h2>До скорой встречи</h2><img class="photo" src="IMG_20261111_115006.jpg" alt="Дмитрий и Яна" loading="lazy" style="width:min(620px,90vw);max-height:760px"></div></section>
 
 <footer><div class="names">Дмитрий <span class="amp">&</span> Яна</div><p>С нетерпением ждём встречи · 26.06.2027</p></footer>
-<script>const date=new Date("2027-06-26T16:00:00+03:00");function tick(){const el=document.getElementById("countdown");const diff=date.getTime()-Date.now();if(diff<=0){el.innerHTML='<span class="count-note">Сегодня наш день! ♥</span>';return}const days=Math.floor(diff/86400000);const hours=Math.floor(diff%86400000/3600000);const minutes=Math.floor(diff%3600000/60000);const seconds=Math.floor(diff%60000/1000);const units=[["дней",days],["часов",hours],["минут",minutes],["секунд",seconds]];el.innerHTML=units.map(([label,value])=>'<div class="count-unit"><span class="count-value">'+String(value).padStart(2,"0").split("").map(d=>'<i class="count-digit">'+d+'</i>').join("")+'</span><span class="count-label">'+label+'</span></div>').join("")+'<div class="count-note">До нашей встречи осталось</div>'}tick();setInterval(tick,1000);document.addEventListener("DOMContentLoaded",()=>{const screen=document.getElementById("intro-screen");const envelope=document.getElementById("envelope-button");const open=document.getElementById("open-invitation");const music=document.getElementById("wedding-music");const musicToggle=document.getElementById("music-toggle");const musicLabel=document.getElementById("music-label");let done=false;function updateMusic(){musicLabel.textContent=music.paused?"Музыка: выкл.":"Музыка: вкл."}async function startMusic(){try{await music.play()}catch(e){}updateMusic()}musicToggle.addEventListener("click",async()=>{if(music.paused){await startMusic()}else{music.pause();updateMusic()}});music.addEventListener("play",updateMusic);music.addEventListener("pause",updateMusic);function createSparkleBurst(){const symbols=["✦","✧","⋆","✴"];for(let i=0;i<72;i++){const p=document.createElement("span");p.className="intro-sparkle";p.textContent=symbols[i%symbols.length];const angle=Math.random()*Math.PI*2;const distance=Math.hypot(window.innerWidth,window.innerHeight)*(.22+Math.random()*.72);p.style.setProperty("--tx",Math.cos(angle)*distance+"px");p.style.setProperty("--ty",Math.sin(angle)*distance+"px");p.style.setProperty("--rot",(Math.random()*260-130)+"deg");p.style.setProperty("--duration",(2.1+Math.random()*2.1)+"s");p.style.setProperty("--delay",(Math.random()*.75)+"s");p.style.setProperty("--spark-size",(12+Math.random()*22)+"px");screen.appendChild(p);requestAnimationFrame(()=>p.classList.add("sparkle-go"));setTimeout(()=>p.remove(),5200)}}function reveal(){if(done)return;done=true;startMusic();envelope.classList.add("opened");screen.querySelectorAll(".heart").forEach((h,i)=>{const angle=Math.random()*Math.PI*2;const distance=Math.hypot(window.innerWidth,window.innerHeight)*(.28+Math.random()*.62);h.style.setProperty("--dx",Math.cos(angle)*distance+"px");h.style.setProperty("--dy",Math.sin(angle)*distance+"px");h.style.setProperty("--size",(25+Math.random()*27)+"px");h.style.animation="heartBurst "+(2.8+Math.random()*1.5)+"s cubic-bezier(.12,.62,.24,1) "+(Math.random()*.55)+"s forwards"});createSparkleBurst();open.textContent="Приятного просмотра";open.disabled=true;setTimeout(()=>screen.classList.add("is-gone"),2600);setTimeout(()=>screen.remove(),3600)}envelope.addEventListener("click",reveal);open.addEventListener("click",reveal)});</script>
+<script>const date=new Date("2027-06-26T16:00:00+03:00");function tick(){const el=document.getElementById("countdown");const diff=date.getTime()-Date.now();if(diff<=0){el.innerHTML='<span class="count-note">Сегодня наш день! ♥</span>';return}const days=Math.floor(diff/86400000);const hours=Math.floor(diff%86400000/3600000);const minutes=Math.floor(diff%3600000/60000);const seconds=Math.floor(diff%60000/1000);const units=[["дней",days],["часов",hours],["минут",minutes],["секунд",seconds]];el.innerHTML=units.map(([label,value])=>'<div class="count-unit"><span class="count-value">'+String(value).padStart(2,"0").split("").map(d=>'<i class="count-digit">'+d+'</i>').join("")+'</span><span class="count-label">'+label+'</span></div>').join("")+'<div class="count-note">До нашей встречи осталось</div>'}tick();setInterval(tick,1000);document.addEventListener("DOMContentLoaded",()=>{const screen=document.getElementById("intro-screen");const envelope=document.getElementById("envelope-button");const open=document.getElementById("open-invitation");const music=document.getElementById("wedding-music");const musicToggle=document.getElementById("music-toggle");const musicLabel=document.getElementById("music-label");let done=false;function updateMusic(){musicLabel.textContent=music.paused?"Музыка: выкл.":"Музыка: вкл."}async function startMusic(){try{await music.play()}catch(e){}updateMusic()}musicToggle.addEventListener("click",async()=>{if(music.paused){await startMusic()}else{music.pause();updateMusic()}});music.addEventListener("play",updateMusic);music.addEventListener("pause",updateMusic);function createSparkleBurst(){}function reveal(){if(done)return;done=true;startMusic();envelope.classList.add("opened");screen.querySelectorAll(".heart").forEach((h,i)=>{const angle=Math.random()*Math.PI*2;const distance=Math.hypot(window.innerWidth,window.innerHeight)*(.28+Math.random()*.62);h.style.setProperty("--dx",Math.cos(angle)*distance+"px");h.style.setProperty("--dy",Math.sin(angle)*distance+"px");h.style.setProperty("--size",(25+Math.random()*27)+"px");h.style.animation="heartBurst "+(2.8+Math.random()*1.5)+"s cubic-bezier(.12,.62,.24,1) "+(Math.random()*.55)+"s forwards"});createSparkleBurst();open.textContent="Приятного просмотра";open.disabled=true;setTimeout(()=>screen.classList.add("is-gone"),2600);setTimeout(()=>screen.remove(),3600)}envelope.addEventListener("click",reveal);open.addEventListener("click",reveal)});</script>
 
 
 <audio id="wedding-music" preload="auto" loop>
